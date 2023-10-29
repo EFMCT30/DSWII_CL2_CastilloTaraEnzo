@@ -1,11 +1,15 @@
 package pe.edu.cibertec.DSWII_CL2_CastilloTaraEnzo.service;
 
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 import pe.edu.cibertec.DSWII_CL2_CastilloTaraEnzo.model.Producto;
 import pe.edu.cibertec.DSWII_CL2_CastilloTaraEnzo.repository.ProductoRepository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@AllArgsConstructor
 public class ProductoService {
 
     private ProductoRepository productoRepository;
@@ -34,6 +38,17 @@ public class ProductoService {
 
     public List<Producto> obtenerProductosPorFiltro(String filtro){
         return productoRepository.filtrarProductosPorNombreSQL(filtro);
+    }
+
+    public void eliminarProductoPorId(Integer id) {
+        // Verificar si el producto existe antes de eliminarlo
+        Optional<Producto> productoOptional = productoRepository.findById(id);
+        if (productoOptional.isPresent()) {
+            productoRepository.deleteById(id);
+        } else {
+            // Manejo si el producto no existe
+            throw new RuntimeException("El producto con ID " + id + " no existe.");
+        }
     }
 
 }

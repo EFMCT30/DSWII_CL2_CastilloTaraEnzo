@@ -10,7 +10,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "productos")
+@Table(name = "producto")
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +25,6 @@ public class Producto {
     @Column(name = "cantidad")
     private Integer cantidad;
 
-    @Column(name = "fechaVencimiento")
-    private Date fechaVencimiento;
+    @Column(name = "fechavencimiento")
+    private Date fechavencimiento;
 }

@@ -1,0 +1,13 @@
+CREATE TABLE Producto (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(255),
+    Descripcion VARCHAR(255),
+    Cantidad INT,
+    FechaVencimiento DATE
+);
+
+INSERT INTO Producto (Nombre, Descripcion, Cantidad, FechaVencimiento) VALUES 
+('Mantequilla', 'Descripción del producto 1', 10, '2023-12-31'),
+('Leche', 'Descripción del producto 2', 20, '2024-06-15'),
+('Arroz', 'Descripción del producto 3', 15, '2023-10-28'),
+('Atun', 'Descripción del producto 4', 8, '2024-04-20');

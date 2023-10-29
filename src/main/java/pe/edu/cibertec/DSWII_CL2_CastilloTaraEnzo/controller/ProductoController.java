@@ -82,6 +82,7 @@ public class ProductoController {
         }
     }
 
+    // x nombre
      @GetMapping("/nombre/{nombre}")
     public ResponseEntity<Producto> obtenerCategoriaPorNombre(
             @PathVariable("nombre") String nombre){
@@ -93,6 +94,7 @@ public class ProductoController {
         return new ResponseEntity<>(producto, HttpStatus.OK);
     }
 
+    // x cantidad
     @GetMapping("/buscarPorCantidadEntre10y100")
     public ResponseEntity<List<Producto>> buscarProductosPorCantidadEntre10y100() {
         List<Producto> productos = productoService.buscarProductosCantidadEntre10y100();
@@ -106,6 +108,7 @@ public class ProductoController {
         return new ResponseEntity<>(productos, HttpStatus.OK);
     }
 
+    // x fecha
     @GetMapping("/buscarPorVencimientoAnio2024")
     public ResponseEntity<List<Producto>> buscarProductosVencimientoAnio2024() {
         List<Producto> productos = productoService.buscarProductosVencimientoAnio2024();

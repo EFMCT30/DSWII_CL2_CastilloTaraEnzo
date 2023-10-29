@@ -14,8 +14,6 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer> {
 
     Optional<Producto> findByNombre(String nombre);
 
-    List<Producto> findByNombreContainingIgnoreCase(String filtro);
-
     @Query("SELECT p FROM Producto p WHERE p.nombre LIKE %:filtro%")
     List<Producto> filtrarProductosPorNombre(@Param("filtro") String filtro);
 

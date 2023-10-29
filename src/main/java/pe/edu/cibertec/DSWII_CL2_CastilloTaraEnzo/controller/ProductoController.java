@@ -6,10 +6,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.cibertec.DSWII_CL2_CastilloTaraEnzo.exception.ResourceNotFoundException;
 import pe.edu.cibertec.DSWII_CL2_CastilloTaraEnzo.model.Producto;
+import pe.edu.cibertec.DSWII_CL2_CastilloTaraEnzo.repository.ProductoRepository;
 import pe.edu.cibertec.DSWII_CL2_CastilloTaraEnzo.service.ProductoService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @RestController
@@ -78,5 +80,16 @@ public class ProductoController {
         } catch (Exception exception) {
             return new ResponseEntity<>("Error al eliminar el producto con ID: " + id, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+     @GetMapping("/nombre/{nombre}")
+    public ResponseEntity<Producto> obtenerCategoriaPorNombre(
+            @PathVariable("nombre") String nombre){
+        Producto producto = productoService
+                .obtenerProductoPorNombre(nombre)
+                .orElseThrow(() -> new ResourceNotFoundException("El producto con el nombre "+
+                        nombre + " no existe."));
+
+        return new ResponseEntity<>(producto, HttpStatus.OK);
     }
 }

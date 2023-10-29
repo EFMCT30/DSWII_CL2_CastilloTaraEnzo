@@ -51,4 +51,12 @@ public class ProductoService {
         }
     }
 
+    public List<Producto> buscarProductosCantidadEntre10y100() {
+        return productoRepository.findProductosCantidadEntre10y100();
+    }
+
+    public List<Producto> buscarProductosVencimientoAnio2024() {
+        return productoRepository.findProductosVencimientoAnio2024();
+    }
+
 }

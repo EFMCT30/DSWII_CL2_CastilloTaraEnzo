@@ -92,4 +92,24 @@ public class ProductoController {
 
         return new ResponseEntity<>(producto, HttpStatus.OK);
     }
+
+    @GetMapping("/buscarPorCantidadEntre10y100")
+    public ResponseEntity<List<Producto>> buscarProductosPorCantidadEntre10y100() {
+        List<Producto> productos = productoService.buscarProductosCantidadEntre10y100();
+        return construirRespuesta(productos);
+    }
+
+    private ResponseEntity<List<Producto>> construirRespuesta(List<Producto> productos) {
+        if (productos.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(productos, HttpStatus.OK);
+    }
+
+    @GetMapping("/buscarPorVencimientoAnio2024")
+    public ResponseEntity<List<Producto>> buscarProductosVencimientoAnio2024() {
+        List<Producto> productos = productoService.buscarProductosVencimientoAnio2024();
+        return construirRespuesta(productos);
+    }
+
 }
